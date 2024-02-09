@@ -1,0 +1,18 @@
+<div class="jumbotron text-center">
+  <h1 class="display-4">Upload Your CV</h1>
+  <p class="lead">Select your CV document to predict job titles.</p>
+  <hr class="my-4">
+  <p>Follow the instructions to upload your document and receive instant job predictions based on your CV.</p>
+  <div class="custom-file mb-3">
+    <input type="file" class="custom-file-input" id="inputGroupFile01" accept=".docx" (change)="onFileSelected($event)">
+    <label class="custom-file-label" for="inputGroupFile01">{{selectedFileName}}</label>
+  </div>
+  <button class="btn btn-primary btn-lg" (click)="onUpload()">Upload File</button>
+
+  <ul class="list-group" *ngIf="showPredictions">
+    <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let prediction of jobPredictions">
+      {{ prediction.jobTitle }}
+      <span class="badge badge-primary badge-pill">{{ prediction.jobPrediction }}</span>
+    </li>
+  </ul>
+</div>
